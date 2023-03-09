@@ -20,7 +20,7 @@ const Container = styled.div`
   background-image: url("/iet-upview.webp");
 `;
 
-const OpacityOverlay = tw.div`-z-10 absolute inset-0 bg-[rgb(115,112,215)] opacity-25`;
+const OpacityOverlay = tw.div`h-[100lvh] -z-10 absolute inset-0 bg-[rgb(115,112,215)] opacity-25`;
 
 const HeroContainer = tw.div`z-20 px-4 sm:px-8 max-w-screen-xl mx-auto`;
 const TwoColumn = tw.div`pt-24 pb-32 px-4 flex justify-between items-center flex-col lg:flex-row`;
