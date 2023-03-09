@@ -12,12 +12,12 @@ import { AiOutlineTags } from "react-icons/ai"
 const Container = tw.div`relative`;
 const Content = tw.div`max-w-screen-xl mx-auto pb-20 lg:pb-24`;
 const ThreeColumn = tw.div`flex flex-col items-center lg:items-stretch lg:flex-row flex-wrap`;
-const Column = tw.div`mt-24 lg:w-1/3`;
+const Column = tw.div`mt-24 mx-4 sm:mx-0 lg:w-1/3`;
 
 const HeadingInfoContainer = tw.div`flex flex-col items-center`;
 const HeadingDescription = tw.p`mt-4 font-medium text-gray-600 text-center max-w-sm`;
 
-const Card = tw.div`rounded border-2 border-dashed border-primary-100 lg:mx-4 xl:mx-8 max-w-sm flex flex-col h-full`;
+const Card = tw.div`rounded border-2 border-dashed border-primary-400 lg:mx-4 xl:mx-8 max-w-sm flex flex-col h-full`;
 const Image = styled.div(props => [
     `background-image: url("${props.imageSrc}");`,
     tw`bg-cover bg-center h-80 lg:h-64 rounded rounded-b-none`
@@ -35,7 +35,7 @@ const Meta = styled.div`
 const Title = tw.h5`mt-4 leading-snug font-bold text-lg`;
 const Description = tw.p`mt-2 text-sm text-secondary-100`;
 const Link = styled(PrimaryButtonBase).attrs({ as: "a" })`
-  ${tw`inline-block mt-4 text-sm font-semibold`}
+  ${tw`inline-block mt-4 text-sm font-semibold bg-primary-700`}
 `
 
 // const DecoratorBlob1 = tw(
@@ -47,8 +47,8 @@ const Link = styled(PrimaryButtonBase).attrs({ as: "a" })`
 
 export default ({
     subheading = "Blog",
-    heading = <>We Love <span tw="text-primary-500">Writing.</span></>,
-    description = "Some amazing blog posts that are written by even more amazing people.",
+    heading = <>We Love <span tw="text-primary-600">Writing.</span></>,
+    description = "We love to write! Check out more of our stuff on Blogs Section.",
 
 }) => {
     const blogPosts = [

@@ -26,13 +26,13 @@ const Heading = tw(SectionHeading)`font-black text-left text-2xl sm:text-3xl xl:
 const Description = tw.p`mt-4 text-center lg:text-left text-sm lg:text-base xl:text-lg font-medium leading-relaxed text-secondary-100`
 
 const Form = tw.form`mt-8 md:mt-10 text-sm flex flex-col lg:flex-row`
-const Input = tw.input`border-2 px-5 py-3 rounded focus:outline-none font-medium transition duration-300 hocus:border-primary-500`
+const Input = tw.input`border-2 px-5 py-3 rounded focus:outline-none font-medium transition duration-300 hocus:border-primary-600`
 
 // const SubmitButton = tw(PrimaryButtonBase)`inline-block lg:ml-6 mt-6 lg:mt-0`
 
 export default ({
   subheading = "Contact Us",
-  heading = <>Who are <span className="text-primary-500">we</span> ?</>,
+  heading = <>Who are <span className="text-primary-600">we</span> ?</>,
   description = "The Institute of Engineering Technology - National Institute of Technology Karnataka (IET-NITK) Student Chapter is actively involved in inculcating a passion for innovation and appreciation temperament in the minds of those who have potential to change the future. We conduct workshops and seminars throughout the academic calendar striving to impact relevant skills to the students. Apart from this, we strive to invite eminent personalities to conduct lectures for the benefit of the club members and keeping doors opened for others interested. We are affiliated to IET London, which is one of the world’s leading professional societies for the engineering and technology community, with more than 168,000 members in 150 countries and offices in Europe, North America and Asia-Pacific. The IET provides a global knowledge network to facilitate the exchange of ideas and promote the positive role of science, engineering and technology in the world.",
   submitButtonText = "Contact Me",
   formAction = "#",
@@ -42,7 +42,7 @@ export default ({
   // The textOnLeft boolean prop can be used to display either the text on left or right side of the image.
 
   return (
-    <Container>
+    <Container id="about">
       <TwoColumn>
         <ImageColumn>
           <Image imageSrc="/iet-upview.webp" />

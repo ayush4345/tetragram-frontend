@@ -1,16 +1,16 @@
 import Head from "next/head";
 import tw, { styled } from "twin.macro";
-import About from "../components/about/about";
-import Blog from "../components/blog/blogcard";
-import Footer from "../components/footer/footer";
-import BackgroundAsImage from "../components/hero/BackgroundAsImage";
-import Projects from "../components/projects/projects";
-import Aboutsigs from "../components/sigs/aboutsigs";
+import About from "/components/about/about";
+import Blog from "/components/blog/blogcard";
+import Footer from "/components/footer/footer";
+import BackgroundAsImage from "/components/hero/BackgroundAsImage";
+import Projects from "/components/projects/projects";
+import Aboutsigs from "/components/sigs/aboutsigs";
 
 export default function Home() {
 
-  const Subheading = tw.span`uppercase tracking-widest font-bold text-primary-500`;
-  const HighlightedText = tw.span`text-primary-500`;
+  const Subheading = tw.span`uppercase tracking-widest font-bold text-primary-600`;
+  const HighlightedText = tw.span`text-primary-600`;
 
 
   return (
@@ -33,7 +33,7 @@ export default function Home() {
         subheading={<Subheading>Features</Subheading>}
         heading={
           <>
-           Our <HighlightedText>SIGS</HighlightedText>
+            Our <HighlightedText>SIGS</HighlightedText>
           </>
         }
       />
