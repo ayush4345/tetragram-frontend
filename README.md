@@ -25,3 +25,9 @@ pnpm create next-app --example with-tailwindcss with-tailwindcss-app
 ```
 
 Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+
+## In this project twin-macro package is used to make code clean and easy to style
+
+To work with *twin-macro*, you need follow some step as there is a need for setup
+
+you watch this video for procedure [make a next project with tailwind css and twin-macro](https://www.youtube.com/watch?v=do3LSqK929Q)
