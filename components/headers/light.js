@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import tw, { styled } from "twin.macro";
 // import styled from "styled-components";
-import { css } from "styled-components/macro"; //eslint-disable-line
+import Link from "next/link.js";
 
 import useAnimatedNavToggler from "../../helpers/useAnimatedNavToggler.js";
 
