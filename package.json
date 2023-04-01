@@ -6,6 +6,9 @@
     "start": "next start"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
+    "@mui/material": "^5.11.15",
     "feather-icons": "^4.29.0",
     "framer-motion": "^10.2.3",
     "next": "latest",

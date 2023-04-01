@@ -2,7 +2,6 @@ import Head from "next/head";
 import tw, { styled } from "twin.macro";
 import About from "/components/about/about";
 import Blog from "/components/blog/blogcard";
-import Footer from "/components/footer/footer";
 import BackgroundAsImage from "/components/hero/BackgroundAsImage";
 import Projects from "/components/projects/projects";
 import Aboutsigs from "/components/sigs/aboutsigs";
@@ -34,7 +33,6 @@ export default function Home() {
       />
       <Blog />
       <Projects />
-      <Footer />
     </div>
   );
 }

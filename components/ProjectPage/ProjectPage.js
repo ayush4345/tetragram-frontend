@@ -32,7 +32,7 @@ export default function ProjectPage() {
             <NavLink href="/projects">
                 Projects
             </NavLink>
-            <NavLink href="#">
+            <NavLink href="/Blogs">
                 Blogs
             </NavLink>
         </NavLinks>,
@@ -50,6 +50,7 @@ export default function ProjectPage() {
             <div className=" mx-8 md:mx-12">
                 <StyledHeader links={navLinks} />
             </div>
+
         </div>
     )
 }
