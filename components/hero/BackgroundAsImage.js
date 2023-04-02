@@ -63,7 +63,7 @@ export default () => {
       <NavLink href="/projects">
         Projects
       </NavLink>
-      <NavLink href="/Blogs">
+      <NavLink href="/blogs">
         Blogs
       </NavLink>
     </NavLinks>,
@@ -83,14 +83,14 @@ export default () => {
         <StyledHeader links={navLinks} />
         <TwoColumn>
           <LeftColumn>
-            
+
             <Heading>
               <span>We Are</span>
               <br />
               <SlantedBackground>IET NITK!</SlantedBackground>
             </Heading>
             <Notification>The Institute of Engineering Technology - National Institute of Technology Karnataka (IET-NITK) Student Chapter</Notification>
-            <PrimaryAction  onClick={() => {router.push("/projects")}} >Explore Projects</PrimaryAction>
+            <PrimaryAction onClick={() => { router.push("/projects") }} >Explore Projects</PrimaryAction>
           </LeftColumn>
           <RightColumn>
             {/* <StyledResponsiveVideoEmbed
