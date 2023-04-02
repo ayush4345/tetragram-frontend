@@ -185,7 +185,7 @@ export default function EventPage() {
                         return (
                             <Column key={index}>
                                 <Card>
-                                    <Image imageSrc={post.imageSrc} />
+                                    {/* <Image imageSrc={post.imageSrc} /> */}
                                     <Details>
                                         <MetaContainer>
                                             <Meta>
