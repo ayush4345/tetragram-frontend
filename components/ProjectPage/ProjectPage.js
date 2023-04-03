@@ -5,6 +5,8 @@ import Pagination from '@mui/material/Pagination';
 import { PrimaryButton as PrimaryButtonBase } from "/components/misc/Buttons.js";
 import { BiUser } from "react-icons/bi"
 import { AiOutlineTags } from "react-icons/ai"
+import data from "/public/data.json"
+import { useRouter } from "next/router.js";
 
 const StyledHeader = styled(Header)`
   ${tw`pt-8 max-w-none`}
@@ -18,7 +20,7 @@ const StyledHeader = styled(Header)`
 
 const Column = tw.div`mt-8 mx-4`;
 
-const Card = tw.div`rounded border-2 border-dashed border-primary-400 w-[80vw] m-auto flex flex-col sm:flex-row h-full`;
+const Card = tw.div`rounded border-2 border-dashed border-primary-400 w-[83vw] m-auto flex flex-col sm:flex-row h-full`;
 const Image = styled.div(props => [
     `background-image: url("${props.imageSrc}");`,
     tw`bg-cover bg-center h-80 w-full sm:w-[326px] lg:h-64 rounded rounded-b-none`
@@ -38,8 +40,8 @@ const Description = tw.p`mt-2 text-sm text-secondary-100`;
 const Link = styled(PrimaryButtonBase).attrs({ as: "a" })`
   ${tw`inline-block mt-4 text-sm font-semibold bg-primary-700`}
   `
-  const Repository = styled(PrimaryButtonBase).attrs({ as: "a" })`
-  ${tw`inline-block ml-4 mt-4 text-sm font-semibold bg-black`}
+const Repository = styled(PrimaryButtonBase).attrs({ as: "a" })`
+  ${tw`inline-block mt-4 text-sm font-semibold bg-black`}
   `
 
 export default function ProjectPage() {
@@ -48,102 +50,12 @@ export default function ProjectPage() {
     const [noOfPage, setNoOfPage] = useState(1)
     const [selectedPage, setSelectedPage] = useState(1)
 
-    const blogPosts = [
-        {
-            imageSrc:
-                "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80",
-            author: "Adam Wathan",
-            category: "SEO",
-            title: "Optimizing your website for your main keyword",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-            url: "https://reddit.com"
-        },
-        {
-            imageSrc:
-                "https://images.unsplash.com/photo-1479660095429-2cf4e1360472?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80",
-            author: "Owais Khan",
-            category: "Advertising",
-            title: "Creating The perfect advertisement campaign",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-            url: "https://timerse.com"
-        },
-        {
-            imageSrc:
-                "https://images.unsplash.com/photo-1579869847514-7c1a19d2d2ad?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
-            author: "Steve Schoger",
-            category: "Social Media",
-            title: "Efficient management of your social media assets",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-            url: "https://timerse.com"
-        },
-        {
-            imageSrc:
-                "https://images.unsplash.com/photo-1579869847514-7c1a19d2d2ad?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
-            author: "Steve Schoger",
-            category: "Social Media",
-            title: "Efficient management of your social media assets",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-            url: "https://timerse.com"
-        },
-        {
-            imageSrc:
-                "https://images.unsplash.com/photo-1579869847514-7c1a19d2d2ad?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
-            author: "Steve Schoger",
-            category: "Social Media",
-            title: "Efficient management of your social media assets",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-            url: "https://timerse.com"
-        },
-        {
-            imageSrc:
-                "https://images.unsplash.com/photo-1579869847514-7c1a19d2d2ad?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
-            author: "Steve Schoger",
-            category: "Social Media",
-            title: "Efficient management of your social media assets",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-            url: "https://timerse.com"
-        },
-        {
-            imageSrc:
-                "https://images.unsplash.com/photo-1579869847514-7c1a19d2d2ad?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
-            author: "Steve Schoger",
-            category: "Social Media",
-            title: "Efficient management of your social media assets",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-            url: "https://timerse.com"
-        },
-        {
-            imageSrc:
-                "https://images.unsplash.com/photo-1579869847514-7c1a19d2d2ad?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
-            author: "Steve Schoger",
-            category: "Social Media",
-            title: "Efficient management of your social media assets",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-            url: "https://timerse.com"
-        },
-        {
-            imageSrc:
-                "https://images.unsplash.com/photo-1579869847514-7c1a19d2d2ad?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
-            author: "Steve Schoger",
-            category: "Social Media",
-            title: "Efficient management of your social media assets",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-            url: "https://timerse.com"
-        },
-        {
-            imageSrc:
-                "https://images.unsplash.com/photo-1579869847514-7c1a19d2d2ad?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
-            author: "Steve Schoger",
-            category: "Social Media",
-            title: "Efficient management of your social media assets",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-            url: "https://timerse.com"
-        }
-    ];
+    const router = useRouter()
+    console.log(data.projects)
 
     useEffect(() => {
-        const number = blogPosts.length / noOfBlog
-        setNoOfPage(number)
+        const number = data.projects.length / noOfBlog
+        setNoOfPage(Math.ceil(number))
     }, [])
 
     console.log(noOfPage)
@@ -183,7 +95,7 @@ export default function ProjectPage() {
                 <StyledHeader links={navLinks} />
             </div>
             <div className=" min-h-[70vh]">
-                {blogPosts.map((post, index) => {
+                {data.projects.map((post, index) => {
                     if (index < selectedPage * 5 && index > ((selectedPage - 1) * 5 - 1)) {
                         return (
                             <Column key={index}>
@@ -193,17 +105,20 @@ export default function ProjectPage() {
                                         <MetaContainer>
                                             <Meta>
                                                 <BiUser />
-                                                <div>{post.author}</div>
+                                                <div className="w-full">{post.built_by}</div>
                                             </Meta>
-                                            <Meta>
+                                            {/* <Meta>
                                                 <AiOutlineTags />
                                                 <div>{post.category}</div>
-                                            </Meta>
+                                            </Meta> */}
                                         </MetaContainer>
                                         <Title>{post.title}</Title>
                                         <Description>{post.description}</Description>
-                                        <Link href={post.url}>Read Post</Link>
-                                        <Repository href="https://github.com/KarthikeyaGundumogula/Creatorz-FrontEnd">Project Repository </Repository>
+                                        <div className=" flex gap-3 flex-col sm:flex-row">
+                                            <Link href={`/project/${post.slug}`}>Read More</Link>
+                                            <Repository href={`${post.github_link}`}>Project Repository </Repository>
+                                        </div>
+
                                     </Details>
                                 </Card>
                             </Column>

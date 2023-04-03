@@ -3,13 +3,11 @@ import Slider from "react-slick";
 import tw, { styled } from "twin.macro";
 import { SectionHeading } from "/components/misc/Headings";
 import { PrimaryButton as PrimaryButtonBase } from "/components/misc/Buttons";
-// import { ReactComponent as PriceIcon } from "feather-icons/dist/icons/dollar-sign.svg";
-// import { ReactComponent as LocationIcon } from "feather-icons/dist/icons/map-pin.svg";
-// import { ReactComponent as StarIcon } from "feather-icons/dist/icons/star.svg";
-// import { ReactComponent as ChevronLeftIcon } from "feather-icons/dist/icons/chevron-left.svg";
-// import { ReactComponent as ChevronRightIcon } from "feather-icons/dist/icons/chevron-right.svg";
+import data from "/public/data.json"
 import { AiOutlineLeft } from "react-icons/ai";
 import { AiOutlineRight } from "react-icons/ai"
+import { BiUser } from "react-icons/bi"
+import { useRouter } from "next/router";
 
 const Container = tw.div`relative`;
 const Content = tw.div`max-w-screen-xl mx-4 xl:mx-auto pb-16 lg:pb-20 overflow-hidden`;
@@ -51,9 +49,16 @@ const RatingsInfo = styled.div`
     ${tw`w-6 h-6 text-yellow-500 fill-current`}
   }
 `;
-const Rating = tw.span`ml-2 font-bold`;
 
-const Description = tw.p`text-sm leading-loose mt-2 sm:mt-4`;
+const Description = tw.p`text-sm mt-2 sm:mt-4`;
+
+const MetaContainer = tw.div`flex items-center`;
+const Meta = styled.div`
+  ${tw`text-secondary-100 font-medium text-sm flex items-center leading-none mr-6 last:mr-0`}
+  svg {
+    ${tw`w-4 h-4 mr-1`}
+  }
+`;
 
 const SecondaryInfoContainer = tw.div`flex flex-col sm:flex-row mt-2 sm:mt-4`;
 const IconWithText = tw.div`flex items-center mr-6 my-2 sm:my-0`;
@@ -89,41 +94,8 @@ export default () => {
         ]
     };
 
-    /* Change this according to your needs */
-    const cards = [
-        {
-            imageSrc: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&h=1024&w=768&q=80",
-            title: "Wyatt Residency",
-            description: "Lorem ipsum dolor sit amet, consectur dolori adipiscing elit, sed do eiusmod tempor nova incididunt ut labore et dolore magna aliqua.",
-            locationText: "Rome, Italy",
-            pricingText: "USD 39/Day",
-            rating: "4.8",
-        },
-        {
-            imageSrc: "https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&h=1024&w=768&q=80",
-            title: "Soho Paradise",
-            description: "Lorem ipsum dolor sit amet, consectur dolori adipiscing elit, sed do eiusmod tempor nova incididunt ut labore et dolore magna aliqua.",
-            locationText: "Ibiza, Spain",
-            pricingText: "USD 50/Day",
-            rating: 4.9,
-        },
-        {
-            imageSrc: "https://images.unsplash.com/photo-1549294413-26f195200c16?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&h=1024&w=768&q=80",
-            title: "Hotel Baja",
-            description: "Lorem ipsum dolor sit amet, consectur dolori adipiscing elit, sed do eiusmod tempor nova incididunt ut labore et dolore magna aliqua.",
-            locationText: "Palo Alto, CA",
-            pricingText: "USD 19/Day",
-            rating: "5.0",
-        },
-        {
-            imageSrc: "https://images.unsplash.com/photo-1571770095004-6b61b1cf308a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&h=1024&w=768&q=80",
-            title: "Hudak Homes",
-            description: "Lorem ipsum dolor sit amet, consectur dolori adipiscing elit, sed do eiusmod tempor nova incididunt ut labore et dolore magna aliqua.",
-            locationText: "Arizona, RAK",
-            pricingText: "USD 99/Day",
-            rating: 4.5,
-        },
-    ]
+    const router = useRouter()
+    console.log(data.projects)
 
     return (
         <section style={{ transform: "none" }}>
@@ -137,34 +109,24 @@ export default () => {
                         </Controls>
                     </HeadingWithControl>
                     <CardSlider ref={setSliderRef} {...sliderSettings}>
-                        {cards.map((card, index) => (
+                        {data.projects.map((card, index) => (
                             <Card key={index}>
-                                <CardImage imageSrc={card.imageSrc} />
+                                {/* <CardImage imageSrc={card.imageSrc} /> */}
                                 <TextInfo>
                                     <TitleReviewContainer>
                                         <Title>{card.title}</Title>
-                                        <RatingsInfo>
-                                            {/* <StarIcon /> */}
-                                            <Rating>{card.rating}</Rating>
-                                        </RatingsInfo>
                                     </TitleReviewContainer>
                                     <SecondaryInfoContainer>
-                                        <IconWithText>
-                                            <IconContainer>
-                                                {/* <LocationIcon /> */}
-                                            </IconContainer>
-                                            <Text>{card.locationText}</Text>
-                                        </IconWithText>
-                                        <IconWithText>
-                                            <IconContainer>
-                                                {/* <PriceIcon /> */}
-                                            </IconContainer>
-                                            <Text>{card.pricingText}</Text>
-                                        </IconWithText>
+                                        <MetaContainer>
+                                            <Meta>
+                                                <BiUser />
+                                                <div className=" w-full">{card.built_by}</div>
+                                            </Meta>
+                                        </MetaContainer>
                                     </SecondaryInfoContainer>
                                     <Description>{card.description}</Description>
                                 </TextInfo>
-                                <PrimaryButton>Book Now</PrimaryButton>
+                                <PrimaryButton onClick={() => { router.push(`/project/${card.slug}`) }}>Read More</PrimaryButton>
                             </Card>
                         ))}
                     </CardSlider>

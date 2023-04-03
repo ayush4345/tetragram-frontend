@@ -4,6 +4,8 @@ import ReactMarkdown from 'react-markdown';
 import tw, { styled } from "twin.macro";
 import Header, { NavLink, NavLinks, PrimaryLink, LogoLink, NavToggle, DesktopNavLinks } from "/components/headers/light.js";
 import data from "/public/data.json"
+import { BsGithub } from "react-icons/bs"
+import Link from "next/link";
 
 const StyledHeader = styled(Header)`
   ${tw`pt-8 max-w-none`}
@@ -18,7 +20,7 @@ const StyledHeader = styled(Header)`
 export default function blog() {
 
     const router = useRouter()
-    const blogId = router.query.name
+    const projectId = router.query.name
     const { name } = router.query
     const [post, setPost] = useState('')
     const [postDetail, setPostDetail] = useState('')
@@ -52,22 +54,22 @@ export default function blog() {
     ];
 
     useEffect(() => {
-        setPost(data.blogs)
+        setPost(data.projects)
     }, []);
 
-    console.log(blogId)
+    console.log(projectId)
 
     useEffect(() => {
         if (post.length > 0) {
             post.forEach(element => {
-                if (element.slug == blogId) {
-                    setPostDetail(element.markdown)
+                if (element.slug == projectId) {
+                    setPostDetail(element)
                 }
                 console.log(element.slug)
-                console.log(blogId)
+                console.log(projectId)
             });
         }
-    }, [post,blogId])
+    }, [post, projectId])
 
     return (
         <>
@@ -75,8 +77,10 @@ export default function blog() {
                 <StyledHeader links={navLinks} />
             </div>
             <div className=" w-[80vw] m-auto my-10">
+                <div className=" text-5xl">{postDetail.title}</div>
+                <Link href={`${postDetail.github_link}`} className="flex items-center gap-4 mb-10 hover:text-primary-600 hover:underline"><BsGithub /> Github Repository</Link>
                 <ReactMarkdown className="prose max-w-full">
-                    {postDetail}
+                    {postDetail.markdown}
                 </ReactMarkdown>
             </div>
 

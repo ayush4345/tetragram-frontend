@@ -5,6 +5,7 @@ import Pagination from '@mui/material/Pagination';
 import { PrimaryButton as PrimaryButtonBase } from "/components/misc/Buttons.js";
 import { BiUser } from "react-icons/bi"
 import { AiOutlineTags } from "react-icons/ai"
+import data from "/public/data.json"
 
 const StyledHeader = styled(Header)`
   ${tw`pt-8 max-w-none`}
@@ -18,7 +19,7 @@ const StyledHeader = styled(Header)`
 
 const Column = tw.div`mt-8 mx-4`;
 
-const Card = tw.div`rounded border-2 border-dashed border-primary-400 flex flex-col sm:flex-row h-full`;
+const Card = tw.div`rounded border-2 border-dashed border-primary-400 w-[83vw] w-auto flex flex-col sm:flex-row h-full`;
 const Image = styled.div(props => [
     `background-image: url("${props.imageSrc}");`,
     tw`bg-cover bg-center h-80 w-full sm:w-[326px] lg:h-64 rounded rounded-b-none`
@@ -139,8 +140,8 @@ export default function BlogPage() {
     ];
 
     useEffect(() => {
-        const number = blogPosts.length / noOfBlog
-        setNoOfPage(number)
+        const number = data.blogs.length / noOfBlog
+        setNoOfPage(Math.ceil(number))
     }, [])
 
     console.log(noOfPage)
@@ -182,31 +183,30 @@ export default function BlogPage() {
                 <StyledHeader links={navLinks} />
             </div>
             <div className=" min-h-[70vh]">
-                {blogPosts.map((post, index) => {
+                {data.blogs.map((post, index) => {
                     if (index < selectedPage * 5 && index > ((selectedPage - 1) * 5 - 1)) {
                         return (
                             <Column key={index}>
                                 <Card>
-                                    <Image imageSrc={post.imageSrc} />
+                                    <Image imageSrc={post.image_url} />
                                     <Details>
                                         <MetaContainer>
                                             <Meta>
                                                 <BiUser />
                                                 <div>{post.author}</div>
                                             </Meta>
-                                            <Meta>
+                                            {/* <Meta>
                                                 <AiOutlineTags />
                                                 <div>{post.category}</div>
-                                            </Meta>
+                                            </Meta> */}
                                         </MetaContainer>
                                         <Title>{post.title}</Title>
                                         <Description>{post.description}</Description>
-                                        <Link href={post.url}>Read Post</Link>
+                                        <Link href={`/blog/${post.slug}`}>Read Post</Link>
                                     </Details>
                                 </Card>
                             </Column>
                         )
-
                     } else {
                         return (<></>)
                     }

@@ -7,7 +7,7 @@ import { PrimaryButton as PrimaryButtonBase } from "/components/misc/Buttons.js"
 // import { ReactComponent as SvgDecoratorBlob2 } from "../../images/svg-decorator-blob-3.svg";
 import { BiUser } from "react-icons/bi"
 import { AiOutlineTags } from "react-icons/ai"
-
+import data from "/public/data.json"
 
 const Container = tw.div`relative`;
 const Content = tw.div`max-w-screen-xl mx-auto pb-20 lg:pb-24`;
@@ -38,48 +38,15 @@ const Link = styled(PrimaryButtonBase).attrs({ as: "a" })`
   ${tw`inline-block mt-4 text-sm font-semibold bg-primary-700`}
 `
 
-// const DecoratorBlob1 = tw(
-//   SvgDecoratorBlob1
-// )`-z-10 absolute bottom-0 right-0 w-48 h-48 transform translate-x-40 -translate-y-8 opacity-25`;
-// const DecoratorBlob2 = tw(
-//   SvgDecoratorBlob2
-// )`-z-10 absolute top-0 left-0 w-48 h-48 transform -translate-x-32 translate-y-full opacity-25`;
-
 export default ({
     subheading = "Blog",
     heading = <>We Love <span tw="text-primary-600">Writing.</span></>,
     description = "We love to write! Check out more of our stuff on Blogs Section.",
 
 }) => {
-    const blogPosts = [
-        {
-            imageSrc:
-                "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80",
-            author: "Adam Wathan",
-            category: "SEO",
-            title: "Optimizing your website for your main keyword",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-            url: "https://reddit.com"
-        },
-        {
-            imageSrc:
-                "https://images.unsplash.com/photo-1479660095429-2cf4e1360472?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80",
-            author: "Owais Khan",
-            category: "Advertising",
-            title: "Creating The perfect advertisement campaign",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-            url: "https://timerse.com"
-        },
-        {
-            imageSrc:
-                "https://images.unsplash.com/photo-1579869847514-7c1a19d2d2ad?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
-            author: "Steve Schoger",
-            category: "Social Media",
-            title: "Efficient management of your social media assets",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-            url: "https://timerse.com"
-        }
-    ];
+
+    console.log(data.blogs)
+
     return (
         <Container>
             <Content>
@@ -89,24 +56,24 @@ export default ({
                     <HeadingDescription>{description}</HeadingDescription>
                 </HeadingInfoContainer>
                 <ThreeColumn>
-                    {blogPosts.map((post, index) => (
+                    {data.blogs.map((post, index) => (
                         <Column key={index}>
                             <Card>
-                                <Image imageSrc={post.imageSrc} />
+                                <Image imageSrc={post.image_url} />
                                 <Details>
                                     <MetaContainer>
                                         <Meta>
                                             <BiUser />
                                             <div>{post.author}</div>
                                         </Meta>
-                                        <Meta>
+                                        {/* <Meta>
                                             <AiOutlineTags />
                                             <div>{post.category}</div>
-                                        </Meta>
+                                        </Meta> */}
                                     </MetaContainer>
                                     <Title>{post.title}</Title>
                                     <Description>{post.description}</Description>
-                                    <Link href={post.url}>Read Post</Link>
+                                    <Link href={`/blog/${post.slug}`}>Read Post</Link>
                                 </Details>
                             </Card>
                         </Column>
