@@ -54,7 +54,7 @@ export default () => {
       <NavLink href="#about">
         About US
       </NavLink>
-      <NavLink href="#">
+      <NavLink href="/#sigs">
         SIGS
       </NavLink>
       <NavLink href="/events">

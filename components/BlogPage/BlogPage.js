@@ -10,7 +10,7 @@ import data from "/public/data.json"
 const StyledHeader = styled(Header)`
   ${tw`pt-8 max-w-none`}
   ${DesktopNavLinks} ${NavLink}, ${LogoLink} {
-    ${tw`text-gray-900 hover:text-primary-600 hover:text-primary-600`}
+    ${tw`text-gray-900 hover:text-primary-600 `}
   }
   ${NavToggle}.closed {
     ${tw`text-gray-900 hover:text-primary-600`}
@@ -19,7 +19,7 @@ const StyledHeader = styled(Header)`
 
 const Column = tw.div`mt-8 mx-4`;
 
-const Card = tw.div`rounded border-2 border-dashed border-primary-400 w-[83vw] w-auto flex flex-col sm:flex-row h-full`;
+const Card = tw.div`rounded border-2 border-dashed border-primary-400 w-[83vw] m-auto flex flex-col sm:flex-row h-full`;
 const Image = styled.div(props => [
     `background-image: url("${props.imageSrc}");`,
     tw`bg-cover bg-center h-80 w-full sm:w-[326px] lg:h-64 rounded rounded-b-none`
@@ -46,98 +46,6 @@ export default function BlogPage() {
     const [noOfPage, setNoOfPage] = useState(1)
     const [selectedPage, setSelectedPage] = useState(1)
 
-    const blogPosts = [
-        {
-            imageSrc:
-                "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80",
-            author: "Adam Wathan",
-            category: "SEO",
-            title: "Optimizing your website for your main keyword",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-            url: "https://reddit.com"
-        },
-        {
-            imageSrc:
-                "https://images.unsplash.com/photo-1479660095429-2cf4e1360472?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80",
-            author: "Owais Khan",
-            category: "Advertising",
-            title: "Creating The perfect advertisement campaign",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-            url: "/blog/aerodynamics"
-        },
-        {
-            imageSrc:
-                "https://images.unsplash.com/photo-1579869847514-7c1a19d2d2ad?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
-            author: "Steve Schoger",
-            category: "Social Media",
-            title: "Efficient management of your social media assets",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-            url: "/blog/aerodynamics"
-        },
-        {
-            imageSrc:
-                "https://images.unsplash.com/photo-1579869847514-7c1a19d2d2ad?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
-            author: "Steve Schoger",
-            category: "Social Media",
-            title: "Efficient management of your social media assets",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-            url: "/blog/aerodynamics"
-        },
-        {
-            imageSrc:
-                "https://images.unsplash.com/photo-1579869847514-7c1a19d2d2ad?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
-            author: "Steve Schoger",
-            category: "Social Media",
-            title: "Efficient management of your social media assets",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-            url: "/blog/aerodynamics"
-        },
-        {
-            imageSrc:
-                "https://images.unsplash.com/photo-1579869847514-7c1a19d2d2ad?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
-            author: "Steve Schoger",
-            category: "Social Media",
-            title: "Efficient management of your social media assets",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-            url: "/blog/aerodynamics"
-        },
-        {
-            imageSrc:
-                "https://images.unsplash.com/photo-1579869847514-7c1a19d2d2ad?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
-            author: "Steve Schoger",
-            category: "Social Media",
-            title: "Efficient management of your social media assets",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-            url: "/blog/aerodynamics"
-        },
-        {
-            imageSrc:
-                "https://images.unsplash.com/photo-1579869847514-7c1a19d2d2ad?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
-            author: "Steve Schoger",
-            category: "Social Media",
-            title: "Efficient management of your social media assets",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-            url: "/blog/aerodynamics"
-        },
-        {
-            imageSrc:
-                "https://images.unsplash.com/photo-1579869847514-7c1a19d2d2ad?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
-            author: "Steve Schoger",
-            category: "Social Media",
-            title: "Efficient management of your social media assets",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-            url: "/blog/aerodynamics"
-        },
-        {
-            imageSrc:
-                "https://images.unsplash.com/photo-1579869847514-7c1a19d2d2ad?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
-            author: "Steve Schoger",
-            category: "Social Media",
-            title: "Efficient management of your social media assets",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-            url: "/blog/aerodynamics"
-        }
-    ];
 
     useEffect(() => {
         const number = data.blogs.length / noOfBlog
@@ -152,10 +60,10 @@ export default function BlogPage() {
             <NavLink href="/">
                 Home
             </NavLink>
-            <NavLink href="#about">
+            <NavLink href="/#about">
                 About US
             </NavLink>
-            <NavLink href="#">
+            <NavLink href="/#sigs">
                 SIGS
             </NavLink>
             <NavLink href="/events">

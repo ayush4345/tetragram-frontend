@@ -66,10 +66,10 @@ export default function ProjectPage() {
             <NavLink href="/">
                 Home
             </NavLink>
-            <NavLink href="#about">
+            <NavLink href="/#about">
                 About US
             </NavLink>
-            <NavLink href="#">
+            <NavLink href="/#sigs">
                 SIGS
             </NavLink>
             <NavLink href="/events">

@@ -18,7 +18,7 @@ const StyledHeader = styled(Header)`
 
 const Column = tw.div`mt-8 mx-4`;
 
-const Card = tw.div`rounded border-2 border-dashed border-primary-400 flex flex-col sm:flex-row h-full`;
+const Card = tw.div`rounded border-2 border-dashed border-primary-400 w-[83vw] m-auto flex flex-col sm:flex-row h-full`;
 const Image = styled.div(props => [
     `background-image: url("${props.imageSrc}");`,
     tw`bg-cover bg-center h-80 w-full sm:w-[326px] lg:h-64 rounded rounded-b-none`
@@ -151,10 +151,10 @@ export default function EventPage() {
             <NavLink href="/">
                 Home
             </NavLink>
-            <NavLink href="#about">
+            <NavLink href="/#about">
                 About US
             </NavLink>
-            <NavLink href="#">
+            <NavLink href="/#sigs">
                 SIGS
             </NavLink>
             <NavLink href="/events">
